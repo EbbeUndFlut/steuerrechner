@@ -32,7 +32,6 @@ let mayTheSteuerberaterBeWithYou = () => {
     }
     isSplit ? (tax *= 2) : null
 
-    console.log(forHeaven(tax))
     moneyDisplay.innerHTML = `${inChurch ? Math.floor(tax + forHeaven(tax)) : Math.floor(tax)} €`
 }
 
@@ -56,32 +55,32 @@ let zwanzigEinUndZwanzig = (value) => {
     }
 }
 let zwanzigZwanzig = (value) => {
-    if (value <= 9744) {
+    if (value <= 9408) {
         return 0
-    } else if (value >= 9745 && value <= 14753) {
-        let y = (value - 9744) / 10000
-        return (995.21 * y + 1400) * y
-    } else if (value >= 14754 && value <= 57918) {
-        let y = (value - 14753) / 10000
-        return (208.85 * y + 2397) * y + 950.96
-    } else if (value >= 57919 && value <= 274612) {
-        return 0.42 * value - 9136.63
+    } else if (value >= 9409 && value <= 14532) {
+        let y = (value - 9408) / 10000
+        return (972.87 * y + 1400) * y
+    } else if (value >= 14533 && value <= 57051) {
+        let y = (value - 14533) / 10000
+        return (212.02 * y + 2397) * y + 972.79
+    } else if (value >= 57052 && value <= 270500) {
+        return 0.42 * value - 8963.74
     } else {
-        return 0.45 * value - 17374.99
+        return 0.45 * value - 17078.74
     }
 }
 let zwanzigNeunzehn = (value) => {
-    if (value <= 9744) {
+    if (value <= 9168) {
         return 0
-    } else if (value >= 9745 && value <= 14753) {
-        let y = (value - 9744) / 10000
-        return (995.21 * y + 1400) * y
-    } else if (value >= 14754 && value <= 57918) {
-        let y = (value - 14753) / 10000
-        return (208.85 * y + 2397) * y + 950.96
-    } else if (value >= 57919 && value <= 274612) {
-        return 0.42 * value - 9136.63
+    } else if (value >= 9169 && value <= 14254) {
+        let y = (value - 9168) / 10000
+        return (980.14 * y + 1400) * y
+    } else if (value >= 14255 && value <= 55960) {
+        let y = (value - 14254) / 10000
+        return (216.16 * y + 2397) * y + 965.58
+    } else if (value >= 55961 && value <= 265326) {
+        return 0.42 * value - 8780.9
     } else {
-        return 0.45 * value - 17374.99
+        return 0.45 * value - 16740.68
     }
 }
