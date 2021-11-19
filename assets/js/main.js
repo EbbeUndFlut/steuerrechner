@@ -17,6 +17,8 @@ let mayTheSteuerberaterBeWithYou = () => {
     let inChurch = form.church.checked
     let tax = 0.0
 
+    isSplit ? (money /= 2) : null
+
     switch (year) {
         case "2021":
             tax = zwanzigEinUndZwanzig(money)
@@ -28,8 +30,10 @@ let mayTheSteuerberaterBeWithYou = () => {
             tax = zwanzigNeunzehn(money)
             break
     }
+    isSplit ? (tax *= 2) : null
+
     console.log(forHeaven(tax))
-    moneyDisplay.innerHTML = `${Math.floor(tax)} €`
+    moneyDisplay.innerHTML = `${inChurch ? Math.floor(tax + forHeaven(tax)) : Math.floor(tax)} €`
 }
 
 let forHeaven = (value) => {
@@ -44,11 +48,11 @@ let zwanzigEinUndZwanzig = (value) => {
         return (995.21 * y + 1400) * y
     } else if (value >= 14754 && value <= 57918) {
         let y = (value - 14753) / 10000
-        return (208, 85 * y + 2397) * y + 950, 96
+        return (208.85 * y + 2397) * y + 950.96
     } else if (value >= 57919 && value <= 274612) {
-        return 0, 42 * value - 9136, 63
+        return 0.42 * value - 9136.63
     } else {
-        return 0, 45 * value - 17374, 99
+        return 0.45 * value - 17374.99
     }
 }
 let zwanzigZwanzig = (value) => {
@@ -59,11 +63,11 @@ let zwanzigZwanzig = (value) => {
         return (995.21 * y + 1400) * y
     } else if (value >= 14754 && value <= 57918) {
         let y = (value - 14753) / 10000
-        return (208, 85 * y + 2397) * y + 950, 96
+        return (208.85 * y + 2397) * y + 950.96
     } else if (value >= 57919 && value <= 274612) {
-        return 0, 42 * value - 9136, 63
+        return 0.42 * value - 9136.63
     } else {
-        return 0, 45 * value - 17374, 99
+        return 0.45 * value - 17374.99
     }
 }
 let zwanzigNeunzehn = (value) => {
@@ -74,10 +78,10 @@ let zwanzigNeunzehn = (value) => {
         return (995.21 * y + 1400) * y
     } else if (value >= 14754 && value <= 57918) {
         let y = (value - 14753) / 10000
-        return (208, 85 * y + 2397) * y + 950, 96
+        return (208.85 * y + 2397) * y + 950.96
     } else if (value >= 57919 && value <= 274612) {
-        return 0, 42 * value - 9136, 63
+        return 0.42 * value - 9136.63
     } else {
-        return 0, 45 * value - 17374, 99
+        return 0.45 * value - 17374.99
     }
 }
