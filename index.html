@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chuck Norris zahlt keine Einkommenssteuer</title>
+        <link rel="stylesheet" href="./assets/css/main.css" />
+    </head>
+    <body>
+        <main>
+            <h1>Einkommenssteuerrechner</h1>
+            <form action="" onsubmit="return false">
+                <label for="year">Für welches Jahr soll berechnet werden</label>
+                <select name="year" id="" onchange="changeYear(this.value)">
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+                <p>Welcher Tarif soll angewendet werden</p>
+                <input type="radio" name="tarif" id="grundtarif" checked /><label for="grundtarif">Grundtarif</label> <input type="radio" name="tarif" id="splittarif" /><label
+                    for="splittarif"
+                    >Splittingtarif</label
+                >
+                <label for="church">Dein Ernst?</label>
+                <input type="checkbox" name="church" id="" />
+                <label for="money">Einkommen</label>
+                <input type="number" name="money" id="" min="0" step="1" oninput="validation(this.value)" /><span>Euro</span>
+                <input type="submit" value="Berechnen" onclick="mayTheSteuerberaterBeWithYou()" disabled />
+            </form>
+            <div class="result">
+                <h2>Einkommenssteuer für das Jahr <span>2021</span></h2>
+                <p class="money">- €</p>
+            </div>
+        </main>
+        <script src="./assets/js/main.js"></script>
+    </body>
+</html>
