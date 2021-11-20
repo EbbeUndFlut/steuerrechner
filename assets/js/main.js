@@ -120,13 +120,11 @@ let zwanzigNeunzehn = (value) => {
 
 // this is for the fancy shit
 let createChart = (values) => {
-    console.log(values)
     let step = 629 / values.income
     let taxDash = values.tax * step
     let churchDash = values.inChurch ? forHeaven(values.tax) * step : 0
     let churchOffset = taxDash * -1
 
-    console.log(taxDash)
     circleTax.style.strokeDasharray = `${taxDash} 629`
     circleCurch.style.strokeDasharray = `${churchDash} 629`
     circleCurch.style.strokeDashoffset = churchOffset
