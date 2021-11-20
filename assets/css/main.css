@@ -4,25 +4,89 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
+}
+
+body {
+  background: #2b2d42;
+}
+
+.resultContainer {
+  width: 38vw;
+  padding-top: 2em;
+  margin: 0 auto;
+  background: #edf2f4;
+  text-align: center;
+  position: relative;
+  bottom: -500px;
+  z-index: -1;
+  transition: bottom 1s;
+}
+.resultContainer circle {
+  fill: none;
+  stroke: #2b2d42;
+  stroke-width: 15;
+  stroke-dasharray: 629 629;
+}
+.resultContainer .taxCircle {
+  stroke: #ef233c;
+  stroke-dasharray: 0 629;
+  stroke-width: 15;
+}
+.resultContainer .churchCircle {
+  stroke: #abcdef;
+  stroke-width: 15;
+  stroke-dasharray: 0 629;
+}
+.resultContainer p {
+  font-weight: 100;
+  font-size: 0.7em;
+}
+.resultContainer .quickFlex:last-child p {
+  font-weight: 400;
+}
+.resultContainer .incomeLegend {
+  border-bottom: 4px solid #2b2d42;
+}
+.resultContainer .taxLegend {
+  border-bottom: 4px solid #ef233c;
+}
+.resultContainer .churchLegend {
+  border-bottom: 4px solid #abcdef;
+}
+.resultContainer .quickFlex {
+  display: flex;
+  padding: 0.5em 1em;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 main {
-  width: 60vw;
+  width: 40vw;
   margin: 0 auto;
-  padding: 2em 2em;
-  background: #b7b7a4;
+  padding: 2em 2em 0;
+  background: #edf2f4;
+  z-index: 2;
+  overflow: hidden;
+}
+main form {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 main form select {
   border: none;
   outline: none;
-  background: #a5a58d;
+  background: none;
 }
 main form input[type=number] {
   border: none;
-  background: #a5a58d;
+  background: none;
   border-bottom: 1px solid #6b705c;
   text-align: right;
+  margin: 0 auto;
+  width: 90%;
 }
 main form input[type=radio] {
   height: 1em;
@@ -32,20 +96,37 @@ main form input[type=checkbox] {
   height: 1em;
   width: 1em;
 }
-main form input[type=submit] {
-  border: none;
-  outline: none;
-  display: block;
-  width: 100%;
-  background: #a5a48d;
-  color: #6b705c;
+main form div:nth-of-type(4) {
+  padding-bottom: 8vh;
+  text-align: center;
 }
-main form input[type=submit]:active {
-  background: #6b705c;
-  color: #a5a48d;
+main form > div {
+  flex-basis: 100%;
 }
-main form label[for=money] {
-  display: block;
+main form > div + div {
+  padding: 4vh 0;
+}
+main form .tariffs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+main form .submitCycle {
+  width: 5em;
+  height: 5em;
+  padding-top: 15px;
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%, 50%) rotate(180deg);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #00fe10 50%, lightgray 50%);
+  text-align: center;
+  transition: transform 2s;
+}
+main form .submitCycle i {
+  font-size: 1.7em;
+  color: #2b2d42;
 }
 
 /*# sourceMappingURL=main.css.map */

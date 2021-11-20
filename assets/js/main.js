@@ -1,22 +1,39 @@
 let form = document.querySelector("form")
 let yearDisplay = document.querySelector(".result > h2 > span")
 let moneyDisplay = document.querySelector(".money")
+let churchDisplay = document.querySelector(".churchTax")
+let incomeDisplay = document.querySelector(".income")
+let totalDisplay = document.querySelector(".total")
 let btn = document.querySelector('input[type="submit"]')
+let cycleBtn = document.querySelector(".submitCycle")
+let circleIncome = document.querySelector(".incomeCircle")
+let circleTax = document.querySelector(".taxCircle")
+let circleCurch = document.querySelector(".churchCircle")
+let validIncome = false
 
+// Validate if the income greater the 0
 let validation = (value) => {
-    value > 0 ? ((btn.disabled = false), (btn.style.color = "white")) : ((btn.disabled = true), (btn.style.color = "#6b705c"))
+    value > 0
+        ? ((validIncome = true), (cycleBtn.style.transform = "translate(-50%, 50%) rotate(360deg)"), (cycleBtn.style.cursor = "pointer"))
+        : ((validIncome = false), (cycleBtn.style.transform = "translate(-50%, 50%) rotate(180deg)"), (cycleBtn.style.cursor = "default"))
 }
 let changeYear = (value) => {
     yearDisplay.innerHTML = value
 }
 
 let mayTheSteuerberaterBeWithYou = () => {
+    if (validIncome !== true) {
+        return
+    }
+
     let money = Number(form.money.value)
+    let income = money
     let year = form.year.value
     let isSplit = form.tarif[1].checked
     let inChurch = form.church.checked
     let tax = 0.0
-
+    let churchTax = 0.0
+    let totalTax = 0.0
     isSplit ? (money /= 2) : null
 
     switch (year) {
@@ -32,12 +49,28 @@ let mayTheSteuerberaterBeWithYou = () => {
     }
     isSplit ? (tax *= 2) : null
 
-    moneyDisplay.innerHTML = `${inChurch ? Math.floor(tax + forHeaven(tax)) : Math.floor(tax)} €`
+    inChurch ? (churchTax = Math.floor(forHeaven(tax))) : null
+    totalTax = tax + churchTax
+
+    // Formated Output
+
+    moneyDisplay.innerHTML = `${Math.floor(tax).toLocaleString("de")} €`
+    churchDisplay.innerHTML = `${Math.floor(churchTax).toLocaleString("de")} €`
+    incomeDisplay.innerHTML = `${Math.floor(income).toLocaleString("de")} €`
+    totalDisplay.innerHTML = `${Math.floor(totalTax).toLocaleString("de")} €`
+
+    createChart({ income: income, tax: tax, inChurch: inChurch })
+
+    // Move the Result upwards
+    document.querySelector(".resultContainer").style.bottom = "0"
 }
 
+// churchTax
 let forHeaven = (value) => {
     return value * 0.09
 }
+
+//Tax Calculations
 
 let zwanzigEinUndZwanzig = (value) => {
     if (value <= 9744) {
@@ -83,4 +116,18 @@ let zwanzigNeunzehn = (value) => {
     } else {
         return 0.45 * value - 16740.68
     }
+}
+
+// this is for the fancy shit
+let createChart = (values) => {
+    console.log(values)
+    let step = 629 / values.income
+    let taxDash = values.tax * step
+    let churchDash = values.inChurch ? forHeaven(values.tax) * step : 0
+    let churchOffset = taxDash * -1
+
+    console.log(taxDash)
+    circleTax.style.strokeDasharray = `${taxDash} 629`
+    circleCurch.style.strokeDasharray = `${churchDash} 629`
+    circleCurch.style.strokeDashoffset = churchOffset
 }

@@ -1,29 +1,101 @@
+// #2b2d42 #8d99ae #edf2f4 #ef233c #d90429
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import "./colors.scss";
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
+}
+
+body {
+    background: #2b2d42;
+}
+
+.resultContainer {
+    width: 38vw;
+    padding-top: 2em;
+    margin: 0 auto;
+    background: #edf2f4;
+    text-align: center;
+    position: relative;
+    bottom: -500px;
+    z-index: -1;
+    transition: bottom 1s;
+
+    circle {
+        fill: none;
+        stroke: $incomeColor;
+        stroke-width: 15;
+        stroke-dasharray: 629 629;
+    }
+    .taxCircle {
+        stroke: $taxColor;
+        stroke-dasharray: 0 629;
+        stroke-width: 15;
+        // stroke-dashoffset: 20;
+    }
+    .churchCircle {
+        stroke: $churchColor;
+        stroke-width: 15;
+        stroke-dasharray: 0 629;
+    }
+    p {
+        font-weight: 100;
+        font-size: 0.7em;
+    }
+    .quickFlex {
+        &:last-child {
+            p {
+                font-weight: 400;
+            }
+        }
+    }
+    .incomeLegend {
+        border-bottom: 4px solid $incomeColor;
+    }
+    .taxLegend {
+        border-bottom: 4px solid $taxColor;
+    }
+    .churchLegend {
+        border-bottom: 4px solid $churchColor;
+    }
+
+    .quickFlex {
+        display: flex;
+        padding: 0.5em 1em;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
 }
 
 main {
-    width: 60vw;
+    width: 40vw;
     margin: 0 auto;
-    padding: 2em 2em;
-    background: #b7b7a4;
+    padding: 2em 2em 0;
+    background: #edf2f4;
+    z-index: 2;
+    overflow: hidden;
 
     form {
+        position: relative;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
         select {
             border: none;
             outline: none;
-            background: #a5a58d;
+            background: none;
         }
         input[type="number"] {
             border: none;
-            background: #a5a58d;
+            background: none;
             border-bottom: 1px solid #6b705c;
             text-align: right;
+            margin: 0 auto;
+            width: 90%;
         }
         input[type="radio"] {
             height: 1em;
@@ -33,21 +105,41 @@ main {
             height: 1em;
             width: 1em;
         }
-        input[type="submit"] {
-            border: none;
-            outline: none;
-            display: block;
-            width: 100%;
-            background: #a5a48d;
-            color: #6b705c;
-
-            &:active {
-                background: #6b705c;
-                color: #a5a48d;
+        div {
+            &:nth-of-type(4) {
+                padding-bottom: 8vh;
+                text-align: center;
             }
         }
-        label[for="money"] {
-            display: block;
+        > div {
+            flex-basis: 100%;
+        }
+        > div + div {
+            padding: 4vh 0;
+        }
+
+        .tariffs {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+        }
+        .submitCycle {
+            width: 5em;
+            height: 5em;
+            padding-top: 15px;
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translate(-50%, 50%) rotate(180deg);
+            border-radius: 50%;
+            background: linear-gradient(180deg, #00fe10 50%, lightgray 50%);
+            text-align: center;
+            transition: transform 2s;
+
+            i {
+                font-size: 1.7em;
+                color: #2b2d42;
+            }
         }
     }
 }
