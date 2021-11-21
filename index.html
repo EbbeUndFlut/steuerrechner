@@ -36,11 +36,11 @@
             </div>
         </section>
         <main>
-            <form action="" onsubmit="return false">
-                <div><input type="number" name="money" id="" min="0" step="1" oninput="validation(this.value)" placeholder="Income" /><span>€</span></div>
+            <form onsubmit="return false">
+                <div><input type="number" name="money" min="0" step="1" oninput="validation(this.value)" placeholder="Income" /><span>€</span></div>
                 <div>
                     <label for="year">welches Jahr </label>
-                    <select name="year" id="" onchange="changeYear(this.value)">
+                    <select name="year" id="year" onchange="changeYear(this.value)">
                         <option value="2021">2021</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
@@ -56,7 +56,7 @@
                 </div>
                 <div>
                     <label for="church"><i class="fas fa-church"></i><i class="fas fa-hand-holding-usd"></i></label>
-                    <input type="checkbox" name="church" id="" />
+                    <input type="checkbox" name="church" id="church" />
                 </div>
                 <div class="submitCycle" onclick="mayTheSteuerberaterBeWithYou()"><i class="fas fa-calculator"></i></div>
             </form>
